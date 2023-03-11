@@ -20,22 +20,7 @@ mongoose.connect('mongodb+srv://muharremozer505:GMTKPdfpa5B9GnZZ@cluster0.ulqw79
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-
-
-
-
-
 app.use('/books',bookRoute);
-
-
-
-app.get("/" , (req,res) => {
-    res.send("Selam!");
-});
-
-
-
-
 
 const port = 3000;
 app.listen(port, ()=>{
