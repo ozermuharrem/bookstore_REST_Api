@@ -2,7 +2,7 @@ const Book = require('../Models/Book');
 
 // get all books
 
-exports.getAllBooks = async (req,res) => {
+exports.getAllBooks = async (req,res, next) => {
     try {
         const books = await Book.find();
 
@@ -20,7 +20,7 @@ exports.getAllBooks = async (req,res) => {
 
 // create book
 
-exports.createBook = async (req,res) => {
+exports.createBook = async (req,res,next) => {
     try {
         const book = await Book.create(req.body);
 
@@ -38,7 +38,7 @@ exports.createBook = async (req,res) => {
 
 //Retrieve a specific book
 
-exports.retrieveBook = async (req,res) => {
+exports.retrieveBook = async (req,res,next) => {
     try {
        const specificBook = await Book.findById(req.params.id);
        
@@ -56,7 +56,7 @@ exports.retrieveBook = async (req,res) => {
 
 //Update Book
 
-exports.updateBook = async (req,res) => {
+exports.updateBook = async (req,res,next) => {
     try {
         const currentYear = new Date;
         
@@ -102,7 +102,7 @@ exports.updateBook = async (req,res) => {
 
 // Delete Book 
 
-exports.deleteBook = async (req, res) => {
+exports.deleteBook = async (req, res,next) => {
     try{
 
         await Book.findOneAndRemove({ _id :req.params.id});
