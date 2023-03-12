@@ -1,11 +1,13 @@
-API erişimini kontrol etmek ve izin verilen kullanıcılara özel içerik sunmak için token işlemleri kullanabilirsiniz. Node.js ve MongoDB kullanarak token tabanlı kimlik doğrulama uygulamak için şu adımları izleyebilirsiniz:
+API erişimini kontrol etmek ve izin verilen kullanıcılara özel içerik sunmak için token işlemleri kullanabilirsiniz. 
+Node.js ve MongoDB kullanarak token tabanlı kimlik doğrulama uygulamak için şu adımları izleyebilirsiniz:
 
-jsonwebtoken paketinin kurulumu: Token oluşturmak ve doğrulamak için jsonwebtoken paketini kurmanız gerekiyor. Aşağıdaki komutu kullanarak paketi yükleyebilirsiniz:
-Copy code
+jsonwebtoken paketinin kurulumu: Token oluşturmak ve doğrulamak için jsonwebtoken paketini kurmanız gerekiyor. 
+Aşağıdaki komutu kullanarak paketi yükleyebilirsiniz:
+
 npm install jsonwebtoken
+
 Kullanıcı modelinin güncellenmesi: Kullanıcı modelinize password adlı bir alan ekleyin. Bu alan, kullanıcının şifresini depolayacak.
-javascript
-Copy code
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
@@ -32,9 +34,10 @@ userSchema.methods.comparePassword = async function (candidatePassword) {
 };
 
 module.exports = mongoose.model('User', userSchema);
-Kullanıcı doğrulama işleminin yapılması: Kullanıcı doğrulama işlemini gerçekleştirebilecek bir işlev oluşturmanız gerekiyor. Bu işlev, kullanıcının kimliğini doğrulayacak ve bir token döndürecektir.
-javascript
-Copy code
+
+Kullanıcı doğrulama işleminin yapılması: Kullanıcı doğrulama işlemini gerçekleştirebilecek bir işlev oluşturmanız gerekiyor. 
+Bu işlev, kullanıcının kimliğini doğrulayacak ve bir token döndürecektir.
+
 const jwt = require('jsonwebtoken');
 const User = require('./user.model');
 
@@ -58,11 +61,13 @@ async function authenticate(req, res) {
 
   res.json({ token });
 }
-Bu kod, authenticate adlı bir işlev oluşturur ve bu işlev, kullanıcı kimliğini doğrular, geçerli bir kullanıcı için bir token oluşturur ve token'i yanıt olarak gönderir.
 
-API rotalarının korunması: Kullanıcı kimlik doğrulaması gerektiren rotalarınızı koruyun. Bunun için, bir middleware işlevi kullanabilirsiniz. Aşağıdaki kod, requireAuth adlı bir middleware işlevi tanımlar:
-javascript
-Copy code
+Bu kod, authenticate adlı bir işlev oluşturur ve bu işlev, kullanıcı kimliğini doğrular, geçerli bir kullanıcı için bir token oluşturur ve 
+token'i yanıt olarak gönderir.
+
+API rotalarının korunması: Kullanıcı kimlik doğrulaması gerektiren rotalarınızı koruyun. 
+Bunun için, bir middleware işlevi kullanabilirsiniz. Aşağıdaki kod, requireAuth adlı bir middleware işlevi tanımlar:
+
 const jwt = require('jsonwebtoken');
 
 function requireAuth(req, res, next) {

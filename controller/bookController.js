@@ -41,7 +41,11 @@ exports.createBook = async (req,res,next) => {
 exports.retrieveBook = async (req,res,next) => {
     try {
        const specificBook = await Book.findById(req.params.id);
-       
+    
+       if(!specificBook)
+            throw "invalid id or no data with this id";
+
+
        res.status(200).json({
         message : "retrieveBook",
         specificBook

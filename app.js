@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
-const jwt = require('jsonwebtoken');
 
 const bookRoute = require('./router/bookRoute');
 const authRoute = require('./router/authRoute');
@@ -23,10 +22,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 
-app.use('/login', authRoute);
+//Router
+app.use('/user', authRoute);
 app.use('/books',bookRoute);
 
-
+//server listen or port
 const port = 3000;
 app.listen(port, ()=>{
     console.log(`Listening on ${port}`);

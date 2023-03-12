@@ -35,7 +35,7 @@ Constraints
 + The book descriptions can be up to 2000 characters long.
 + The book authors can be up to 255 characters long.
 + The book year must be a positive integer between 0 and the current year.
-+ The book cover can be a URL string of up to 1000 characters.
+The book cover can be a URL string of up to 1000 characters.
 
 Deliverables
 
