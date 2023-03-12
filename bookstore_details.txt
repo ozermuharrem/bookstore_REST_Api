@@ -1,9 +1,9 @@
 Problem Statement
 
-Your task is to implement a CRUD API for a bookstore. 
-Each book has the following attributes: 
-title, description, author, year, and cover. 
-You also need to create a Node.js library that wraps the API 
++ Your task is to implement a CRUD API for a bookstore. 
++ Each book has the following attributes: 
++ title, description, author, year, and cover. 
++ You also need to create a Node.js library that wraps the API 
 and requires authentication using client ID and secret key.
 
 Requirements
@@ -14,7 +14,7 @@ Implement the following CRUD API endpoints for managing books:
 + GET /books/:id - Retrieve a specific book by ID
 + POST /books - Create a new book
 + PUT /books/:id - Update a specific book by ID
-DELETE /books/:id - Delete a specific book by ID
++DELETE /books/:id - Delete a specific book by ID
 Each book should have the following attributes:
 + title (string, required)
 + description (string, required) 

@@ -18,9 +18,8 @@ exports.getAllBooks = async (req,res) => {
     }
 }
 
-
-
 // create book
+
 exports.createBook = async (req,res) => {
     try {
         const book = await Book.create(req.body);
@@ -37,7 +36,7 @@ exports.createBook = async (req,res) => {
     }
 }
 
-//Retrieve a specific book by ID
+//Retrieve a specific book
 
 exports.retrieveBook = async (req,res) => {
     try {
@@ -59,26 +58,61 @@ exports.retrieveBook = async (req,res) => {
 
 exports.updateBook = async (req,res) => {
     try {
-        const updateBook = await Book.findOne({_id : req.params.id})
-
-        // console.log(req.body.year );
-
-        const cariYil = new Date
-         console.log(typeof req.body.year);
-    
-        if(req.body.year < 0 && req.body.year > cariYil.getFullYear() && typeof req.body.year != Number){
-             throw((err) => {
-                 err
-             });
-         }else
-            await Book.findByIdAndUpdate(req.params.id, req.body);
+        const currentYear = new Date;
         
+        function isURL(str) {
+            // URL regular expression
+            const pattern = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w .-]*)*\/?$/;
+            return pattern.test(str);
+        }
+
+        if(typeof req.body.year != Number && (req.body.year < 0 || req.body.year > currentYear.getFullYear()))
+             throw "year must be a positive integer between 0 and the current year";
+        if(req.body.title){
+                if(req.body.title.length > 255)
+                    throw "titles can be up to 255 characters long";
+         }
+        if(req.body.author){
+            if(req.body.author.length > 255)
+                throw "authors can be up to 255 characters long";
+        }
+        if(req.body.description){
+            if(req.body.description.length > 2000)
+                throw "descriptions can be up to 2000 characters long";
+        }
+        if(req.body.cover){
+            if(!isURL(req.body.cover))
+               throw "please enter a valid url address";
+        }
+
+        
+        
+        await Book.findByIdAndUpdate(req.params.id, req.body);
         res.status(200).json({
             message : `update book id: ${req.params.id}`
         })
     } catch (error) {
         res.status(400).json({
             message : `update book fail id: ${req.params.id}`,
+            error
+        })
+        console.log(error);
+    }
+}
+
+// Delete Book 
+
+exports.deleteBook = async (req, res) => {
+    try{
+
+        await Book.findOneAndRemove({ _id :req.params.id});
+        
+        res.status(200).json({
+        message : `deleting book id: ${req.params.id}`
+        })
+    }catch(error){
+        res.status(400).json({
+            message : `deleting book fail id: ${req.params.id}`,
             error
         })
     }
