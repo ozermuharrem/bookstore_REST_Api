@@ -25,12 +25,12 @@ exports.createBook = async (req,res,next) => {
         const book = await Book.create(req.body);
 
         res.status(201).json({
-            status : "creation successful",
+            message : "creation successful",
             book
         })
     } catch (error) {
         res.status(400).json({
-            status : "creation is incorrect",
+            message : "creation is incorrect",
             error
         })
     }
@@ -92,7 +92,7 @@ exports.updateBook = async (req,res,next) => {
         
         
         await Book.findByIdAndUpdate(req.params.id, req.body);
-        res.status(200).json({
+        res.status(201).json({
             message : `update book id: ${req.params.id}`
         })
     } catch (error) {
