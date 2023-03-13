@@ -1,20 +1,19 @@
 const assert = require('assert');
 const request = require('request');
 
-
 // API url
 const apiUrl = 'http://localhost:3000';
 let token;
 
 
-describe("bookstore api test", ()=>{
+describe("bookstore api test".toUpperCase(), ()=>{
     let user;
     let id;
 
     console.log("⚠️  \033[1;91mYour server must be up for this test to run. Please make sure the server is up\033[0m");
 
     if(!process.argv[3] && !process.argv[4]){
-        console.log("please enter mail and password after npm test script");
+        console.log("Please Enter Mail And Password After 'npm test script'");
         console.info("\033[1;95mnpm test <email> <password>\033[0m");
         return (0);
     }
@@ -58,7 +57,6 @@ describe("bookstore api test", ()=>{
           }
         }, function(error, response, body) {
             id = response.body.book._id;
-            console.log("blog içi id: " + id);
           assert.equal(response.statusCode, 201);
           done();
         });
@@ -88,7 +86,6 @@ describe("bookstore api test", ()=>{
             },function(error,response,body){
                 assert.equal(response.statusCode, 201);
                 assert.equal(body.message, "update book id: "+id)
-                // console.log(body.message, "update book id: "+id);
                 done();
             });
         });
