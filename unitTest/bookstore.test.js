@@ -4,23 +4,12 @@ const request = require('request');
 // API url
 const apiUrl = 'http://localhost:3000';
 let token;
-
+let user = {email: "test1@gmail.com" , password : "ps123456" }
 
 describe("bookstore api test".toUpperCase(), ()=>{
-    let user;
     let id;
 
     console.log("⚠️  \033[1;91mYour server must be up for this test to run. Please make sure the server is up\033[0m");
-
-    if(!process.argv[3] && !process.argv[4]){
-        console.log("Please Enter Mail And Password After 'npm test script'");
-        console.info("\033[1;95mnpm test <email> <password>\033[0m");
-        return (0);
-    }
-    else
-        user = {email : process.argv[3] , password : process.argv[4]}
-
-
      // API Login Request Test
     it("\033[1;94mLogin Request Test\033[0m", (done)=>{
         request.post(apiUrl+ '/user/login', {json : user}, function(err,res,body){
@@ -33,13 +22,10 @@ describe("bookstore api test".toUpperCase(), ()=>{
     })
 
 
-      // get all books test wtih token
-    it('\033[1;94mGet All Books Test With Token\033[0m', function(done) {
+      // get all books test
+    it('\033[1;94mGet All Books Test\033[0m', function(done) {
         request.get({
           url: apiUrl + '/books',
-          headers: {
-            'Authorization': 'Bearer ' + token
-          }
         }, function(error, response, body) {
           assert.equal(response.statusCode, 200);
           done();
@@ -63,7 +49,7 @@ describe("bookstore api test".toUpperCase(), ()=>{
       });
 
         // retrivrBook test with token
-    it('\033[1;94mRetrieve Book Test With Token And ID\033[0m', function(done){
+    it('\033[1;94mRetrieve Book Test\033[0m', function(done){
         request.get({
             url : apiUrl + "/books/"+ id,
             headers: {
@@ -102,4 +88,17 @@ describe("bookstore api test".toUpperCase(), ()=>{
                 done();
             });
         }); 
+})
+
+
+describe("User Errors", ()=>{
+  it("\033[1;94mWrong Email And Password\033[0m", (done)=>{
+    request.post(apiUrl+ '/user/login', {email : "fail", password : "none"}, function(err,res,body){
+            
+      
+      assert.equal(res.statusCode,400);
+      done();
+  })
+
+  })
 })
