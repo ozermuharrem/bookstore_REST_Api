@@ -1,20 +1,20 @@
 While developing this project.
 
-BackEnd;
+💽 BackEnd;
  * NodeJs
  * ExpressJS
  
-FrontEnd;
+🖥️ FrontEnd;
  - Template (https://html.design/)
  - JavaScript
  - Html
  - Css
  - Boostrap
 
-Database;
+☁️ Database;
  - MongoDb
 
-Deployment
+🖧 Deployment
  - AWS Route53
  - DigitalOceans
  - Nginx
