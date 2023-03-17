@@ -19,6 +19,10 @@ While developing this project.
  - DigitalOceans
  - Nginx
  - PM2
+### Root Directory
+
+``https://api.bookstore.ozermuharrem.com``
+
 
 ### BOOKSTORE API REFERENCE
 
@@ -105,11 +109,9 @@ To delete the existing book, you need to send a request to the `/books/:id` endp
 
 To run the test, simply enter the `npm test` command at root.
 
-
 ![unit test](https://user-images.githubusercontent.com/86782430/226000498-d2e546a0-ef0a-46bf-b73e-a649cb338b40.png)
-
 
 # Memorial Real Test And Use Api 
 
-I wrote the [memorial](https://memorial.ozermuharrem.com) project to use and test the APIs I wrote with this project. In this project, the bookstore api was tested and used. You can reach the project by clicking the [GitHub](https://github.com/ozermuharrem/memorial) link.
+I wrote the [memorial](https://memorial.ozermuharrem.com) project which can i used to api’s for this project
 
