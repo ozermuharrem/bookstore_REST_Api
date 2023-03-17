@@ -23,6 +23,10 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 
 //Router
+/*
+app.use('/', (req,res)=>{
+	res.send('Welcome To Api Server');
+}); */
 app.use('/user', authRoute);
 app.use('/books',bookRoute);
 

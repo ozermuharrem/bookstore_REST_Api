@@ -2,7 +2,7 @@ const assert = require('assert');
 const request = require('request');
 
 // API url
-const apiUrl = 'http://localhost:3000';
+const apiUrl = 'https://api.bookstore.ozermuharrem.com';
 let token;
 let user = {email: "test1@gmail.com" , password : "ps123456" }
 
