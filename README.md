@@ -38,7 +38,7 @@ First, send a post request to `/user/register` with email and password.
 ![user-register](https://user-images.githubusercontent.com/86782430/225988674-3adf460c-9345-45ba-8a41-418c320c8e1d.png)
 
 
-After registering, you need to login with your email address and password from `/ures/login`
+After registering, you need to login with your email address and password from `/user/login`
 
 After you log in, you will be given tokens. The token is valid for 15 minutes and will expire after 15 minutes.
 
