@@ -13,18 +13,54 @@ API requests without authentication will also fail.
 
 First, send a post request to `/user/register` with email and password.
 
-![register](https://user-images.githubusercontent.com/86782430/225959181-5c32af35-eb76-4bd8-b087-09fe019cde80.png)
+![user-register](https://user-images.githubusercontent.com/86782430/225988674-3adf460c-9345-45ba-8a41-418c320c8e1d.png)
 
-After registering, you need to login with your email address and password from '/ures/login'.
+
+After registering, you need to login with your email address and password from `/ures/login`
 
 After you log in, you will be given tokens. The token is valid for 15 minutes and will expire after 15 minutes.
 
-![login](https://user-images.githubusercontent.com/86782430/225960021-8d94fbd3-bace-478a-bced-d4b3cd5437f7.png)
+![user-login](https://user-images.githubusercontent.com/86782430/225988706-dcbe20c0-7ea4-4f84-b728-881ee80e1538.png)
+
 
 The token is not required for the get requests, which you will use in the token post requests you receive.
 
 >GET /books 
 
 provides access to all books registered in the database
+
+![all-books](https://user-images.githubusercontent.com/86782430/225986460-e1795c37-9607-4c4a-9ead-7c520bb1deae.png)
+
+>POST /books 
+
+It is the stopping point used to add new books. You will need tokens to add new books. You need to use the token returned after the `user/login` request. For requests made through Postmen, you should write the token in the input that opens after selecting the Type section as Bearer Token in the Authorization tab.
+
+![tokenInit](https://user-images.githubusercontent.com/86782430/225987387-7a334e43-297a-4329-a504-eecc46b518e4.png)
+
+Each book should have the following attributes:
++ title (string, required)
++ description (string, required) 
++ author (string, required)
++ year (number, required)
++ cover (string, optional)
+
+##### Constraints
+
++ The book titles can be up to 255 characters long.
++ The book descriptions can be up to 2000 characters long.
++ The book authors can be up to 255 characters long.
++ The book year must be a positive integer between 0 and the current year.
++ The book cover can be a URL string of up to 1000 characters.
+
+![create-book](https://user-images.githubusercontent.com/86782430/225988491-b3c5b0ac-a6ff-4ec6-9b53-c152c910f2f6.png)
+
+>GET /books/:id 
+
+To send a single book request, you need to send the request with the book id to the `/books/:id` endpoint. No token is needed for this operation.
+
+![books-id-singlebook](https://user-images.githubusercontent.com/86782430/225989717-3e0cd474-4917-4eef-abdc-8435448f175c.png)
+
+>PUT /books/:id
+
 
 
