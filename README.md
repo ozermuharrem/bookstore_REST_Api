@@ -1,3 +1,25 @@
+While developing this project.
+
+BackEnd;
+ * NodeJs
+ * ExpressJS
+ 
+FrontEnd;
+ - Template (https://html.design/)
+ - JavaScript
+ - Html
+ - Css
+ - Boostrap
+
+Database;
+ - MongoDb
+
+Deployment
+ - AWS Route53
+ - DigitalOceans
+ - Nginx
+ - PM2
+
 ### BOOKSTORE API REFERENCE
 
 Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
@@ -86,4 +108,8 @@ To run the test, simply enter the `npm test` command at root.
 
 ![unit test](https://user-images.githubusercontent.com/86782430/226000498-d2e546a0-ef0a-46bf-b73e-a649cb338b40.png)
 
+
+# Memorial Real Test And Use Api 
+
+I wrote the [memorial](https://memorial.ozermuharrem.com) project to use and test the APIs I wrote with this project. In this project, the bookstore api was tested and used. You can reach the project by clicking the [GitHub](https://github.com/ozermuharrem/memorial) link.
 
