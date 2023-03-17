@@ -62,5 +62,28 @@ To send a single book request, you need to send the request with the book id to 
 
 >PUT /books/:id
 
+ Update a specific book by ID
+
+To update the existing book, you need to send a request to the `/books/:id` endpoint. To do this, you need tokens.
+
+![update-book](https://user-images.githubusercontent.com/86782430/225998197-f1acef1a-ae7d-4eb1-8dba-e98d39f35186.png)
+
+
+> DELETE /books/:id 
+
+Delete a specific book by ID
+
+To delete the existing book, you need to send a request to the `/books/:id` endpoint. To do this, you need tokens.
+
+![delete-book](https://user-images.githubusercontent.com/86782430/225998595-faa8809c-8997-42d0-ad85-c9b7a8013de1.png)
+
+<hr>
+
+# Unit Test
+
+To run the test, simply enter the `npm test` command at root.
+
+
+![unit test](https://user-images.githubusercontent.com/86782430/226000498-d2e546a0-ef0a-46bf-b73e-a649cb338b40.png)
 
 
